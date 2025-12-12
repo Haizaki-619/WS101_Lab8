@@ -1,0 +1,29 @@
+type Product {
+    id: ID!
+    name: String!
+    price: Float
+}
+
+type Query {
+    allProducts: [Product!]!
+    allProductNames: [String]
+    findProductsById(id: Int): [Product!]!
+    productById(id: ID!): Product
+}
+
+type Mutation {
+    addProduct(name: String!, price: Float): Product!
+    addProductUsingInputType(newProduct: NewProduct): Product
+    updateProductName(id: ID!, name: String!): Product!
+    deleteProduct(id: ID!): String
+}
+
+type Subscription {
+    reactiveFetchProducts: [Product]!
+}
+
+input NewProduct {
+    id: ID!
+    name: String
+    price: Float
+}
